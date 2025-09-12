@@ -1,0 +1,23 @@
+
+
+name: chat-ai-agent
+
+services:
+  ai-agent:
+    build:
+      context: .
+      target: dev            # swap to 'prod' for a production build
+    image: ai-agent:dev
+    container_name: ai-agent
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app:rw,cached
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/healthz"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
