@@ -1,0 +1,19 @@
+{
+  "name": "Casimir (Casi) Lundberg",
+  "location": "Espoo, Finland",
+  "tagline": "Aviation pro → Software developer",
+  "focus": ["C/C++", "React/TS", "Fastify/Prisma", "Python"],
+  "projects": [
+    "Transcendence (full-stack Pong web app)",
+    "HTTP/1.1 server in C++",
+    "MiniBash (C)",
+    "Portfolio site"
+  ],
+  "username": "Welhox",
+  "email": "mail@casimirlundberg.fi",
+  "links": {
+    "site": "https://casimirlundberg.fi",
+    "github": "https://github.com/Welhox",
+    "linkedin": "https://www.linkedin.com/in/casimirlundberg/"
+  }
+}

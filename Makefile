@@ -1,24 +1,32 @@
 APP_NAME=ai-agent
 IMAGE_DEV=$(APP_NAME):dev
 IMAGE_PROD=$(APP_NAME):prod
-PORT=8000
+PORT=8000                 # host port
+CONTAINER_PORT=8080       # container port (Dockerfile/Cloud Run)
 
-.PHONY: help venv dev run docker-dev docker-prod clean stop
+.PHONY: help venv dev run docker-dev docker-prod clean stop fmt lint
 
 help:
 	@echo "Targets:"
-	@echo "  venv        - create local venv and install deps"
-	@echo "  dev         - run locally with uvicorn --reload"
+	@echo "  venv        - create local venv and install deps (runtime + dev)"
+	@echo "  dev         - run locally with uvicorn --reload (dotenv handled in app)"
 	@echo "  docker-dev  - build + up dev container (hot reload)"
 	@echo "  docker-prod - build + run prod container"
+	@echo "  fmt         - black format"
+	@echo "  lint        - ruff lint"
 	@echo "  clean       - remove caches and containers"
+	@echo "  stop        - docker compose down"
 
 venv:
 	python3 -m venv .venv
-	. .venv/bin/activate && pip install --upgrade pip setuptools wheel && pip install -r requirements.txt
+	. .venv/bin/activate && \
+	  pip install --upgrade pip setuptools wheel && \
+	  pip install -r requirements.txt -r requirements-dev.txt
 
 dev:
-	. .venv/bin/activate && uvicorn main:app --host 0.0.0.0 --port $(PORT) --reload
+	# .env is loaded by python-dotenv in app.main
+	. .venv/bin/activate && \
+	uvicorn app.main:app --host 0.0.0.0 --port $(PORT) --reload
 
 run: dev
 
@@ -27,16 +35,24 @@ docker-dev:
 	docker compose logs -f
 
 docker-prod:
-	docker build --target prod -t $(IMAGE_PROD) .
-	docker run -d --rm --name $(APP_NAME)-prod -p $(PORT):$(PORT) --env-file .env $(IMAGE_PROD)
+	# Build a lean prod image from the same Dockerfile
+	docker build -t $(IMAGE_PROD) .
+	docker run -d --rm --name $(APP_NAME)-prod \
+	  -p $(PORT):$(CONTAINER_PORT) \
+	  --env-file .env \
+	  $(IMAGE_PROD)
 	@echo ">>> Prod container started at http://localhost:$(PORT)"
+
+fmt:
+	. .venv/bin/activate && black app
+
+lint:
+	. .venv/bin/activate && ruff check app
 
 clean:
 	docker compose down
-	docker rm -f $(APP_NAME)-prod || true
-	rm -rf __pycache__ .pytest_cache .ruff_cache .mypy_cache
+	docker rm -f $(APP_NAME)-prod 2>/dev/null || true
+	rm -rf __pycache__ .pytest_cache .ruff_cache .mypy_cache .venv
 
 stop:
 	docker compose down
-	-docker rm -f ai-agent-prod
-

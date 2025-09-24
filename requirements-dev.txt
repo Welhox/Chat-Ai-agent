@@ -1,0 +1,6 @@
+# Dev / linting / formatting
+black==24.8.0
+ruff==0.6.9
+
+# Optional: local env loading for convenience
+python-dotenv==1.0.1
