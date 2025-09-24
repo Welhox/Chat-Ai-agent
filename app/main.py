@@ -33,13 +33,18 @@ else:
 # ----- FastAPI + CORS -----
 app = FastAPI(title="AI Agent Backend", version="0.1.0")
 
-# Allow specific origins from env (comma-separated). If missing, default to localhost dev.
+# Allow specific origins from env (comma-separated). If missing, default to localhost dev + production.
 allowed = [o.strip() for o in (os.getenv("ALLOWED_ORIGINS") or "").split(",") if o.strip()]
-default_dev_origins = ["http://127.0.0.1:5173", "http://localhost:5173"]
+default_origins = [
+    "http://127.0.0.1:5173", 
+    "http://localhost:5173",
+    "https://casimirlundberg.fi",
+    "https://www.casimirlundberg.fi"
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed or default_dev_origins,
+    allow_origins=allowed or default_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
