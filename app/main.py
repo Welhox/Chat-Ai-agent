@@ -3,9 +3,12 @@ import os
 import time
 import json
 from typing import List, Literal, Optional, Dict, Any
-from dotenv import load_dotenv
-load_dotenv()
-
+# Optional dotenv loading (local dev only)
+try:
+    from dotenv import load_dotenv  # type: ignore
+    load_dotenv()
+except Exception:
+    pass
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
