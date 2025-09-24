@@ -37,9 +37,10 @@ docker-dev:
 docker-prod:
 	# Build a lean prod image from the same Dockerfile
 	docker build -t $(IMAGE_PROD) .
-	docker run -d --rm --name $(APP_NAME)-prod \
+	docker run -d --name $(APP_NAME)-prod \
 	  -p $(PORT):$(CONTAINER_PORT) \
 	  --env-file .env \
+	  --restart unless-stopped \
 	  $(IMAGE_PROD)
 	@echo ">>> Prod container started at http://localhost:$(PORT)"
 
