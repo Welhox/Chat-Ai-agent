@@ -1,8 +1,8 @@
 APP_NAME=ai-agent
 IMAGE_DEV=$(APP_NAME):dev
 IMAGE_PROD=$(APP_NAME):prod
-PORT=8000                 # host port
-CONTAINER_PORT=8080       # container port (Dockerfile/Cloud Run)
+PORT=8000
+CONTAINER_PORT=8080
 
 .PHONY: help venv dev run docker-dev docker-prod clean stop fmt lint
 
