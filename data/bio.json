@@ -2,7 +2,7 @@
   "name": "Casimir (Casi) Lundberg",
   "location": "Espoo, Finland",
   "tagline": "Aviation pro → Software developer",
-  "focus": ["C/C++", "React/TS", "Fastify/Prisma", "Python"],
+  "focus": ["C/C++", "React/TS", "Fastify", "Python", "Docker", "Linux"],
   "projects": [
     "Transcendence (full-stack Pong web app)",
     "HTTP/1.1 server in C++",
