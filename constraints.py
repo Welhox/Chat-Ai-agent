@@ -74,7 +74,8 @@ class ToolUsageGuidelines:
     }
     
     BEST_PRACTICES = """
-    - Always try get_professional_profile first for personal/professional questions
+    - ALWAYS use get_professional_profile for ANY questions about Casimir's family, wife, children, personal life, hobbies, or interests
+    - Use get_professional_profile first for all personal/professional questions
     - Use specific GitHub tools for code-related queries
     - Cite sources with file paths and repository names
     - Be transparent about tool limitations and suggest alternatives

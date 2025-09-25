@@ -249,7 +249,7 @@ TOOLS_SPEC = [
         "type": "function",
         "function": {
             "name": "get_professional_profile",
-            "description": "Get comprehensive professional information including experience, skills, education, and achievements",
+            "description": "ALWAYS USE for questions about Casimir's family, personal life, wife, children, hobbies, or any personal information. Also provides comprehensive professional information including experience, skills, education, and achievements.",
             "parameters": {
                 "type": "object",
                 "properties": {},
