@@ -1,16 +1,200 @@
 {
-  "name": "Casimir (Casi) Lundberg",
+  "name": "Casimir Lundberg",
   "location": "Espoo, Finland",
   "tagline": "Aviation pro → Software developer",
+  "profile_summary": "A software developer with a strong foundation in responsibility and precision, gained in the aviation industry. Used to working as part of a team and has learned to quickly assimilate new technologies while studying at Hive Helsinki. Has a curious, childlike mind and loves solving problems. Eager to demonstrate new skill set and contribute to the tech industry.",
   "focus": ["C/C++", "React/TS", "Fastify", "Python", "Docker", "Linux"],
-  "projects": [
-    "Transcendence (full-stack Pong web app)",
-    "HTTP/1.1 server in C++",
-    "MiniBash (C)",
-    "Portfolio site"
-  ],
   "username": "Welhox",
   "email": "mail@casimirlundberg.fi",
+  "professional": {
+    "current_role": "Software Developer",
+    "background": "Aviation professional transitioning to software development",
+    "education": [
+      {
+        "school": "Hive Helsinki",
+        "period": "2023 - 2025",
+        "program": "Intensive Software Development and Administration Program",
+        "description": "Including a diverse set of problems to solve using a range of technologies"
+      },
+      {
+        "school": "Vaasa Aftonskola",
+        "program": "Matriculation Examination"
+      }
+    ],
+    "experience": [
+      {
+        "role": "Operations Officer | System Administrator",
+        "company": "Aviator Finland",
+        "period": "2013 - PRESENT",
+        "responsibilities": [
+          "Aircraft weight and balance Instructor and Officer, responsible for load planning and performing weight and balance calculations for aircraft",
+          "Instructed both manual and computerized weight and balance methods, according to industry standards",
+          "Maintained training and procedural documentation",
+          "Responsible for establishing Helsinki as a centralized load control hub, managing weight and balance for other stations",
+          "Coordinated daily ground operations for multiple client airlines, including ad-hoc flights",
+          "Worked closely with client airlines to ensure seamless operations",
+          "System administration of the Departure Control System (DCS), including system configuration and user management of 200+ users",
+          "Defined and maintained business rules in the system, liaised with the service provider, and carefully managed user access due to sensitive information",
+          "Responsible for setting up new systems and infrastructure (such as self-service bag drop and check-in machines)",
+          "Learned the importance of precision, and the need to double-check all work",
+          "Gained broad insight into various systems used across the aviation industry"
+        ]
+      },
+      {
+        "role": "Passenger Service Agent",
+        "company": "Servisair Finland",
+        "period": "2011 - 2013",
+        "responsibilities": [
+          "Provided customer service at check-in for several international airlines",
+          "Oversaw flight turnaround coordination at gates, ensuring on time departures and high level of customer service",
+          "Also responsible for teaching gate coordination, and upholding relevant documentation",
+          "Learnt how to cope in high stress environments, and how to manage challenging customer interactions"
+        ]
+      }
+    ],
+    "technical_skills": {
+      "programming_languages": ["C", "C++", "Python", "TypeScript"],
+      "frameworks_libraries": ["React", "Node.js", "Fastify", "Tailwind.css", "Prisma"],
+      "tools_technologies": ["Docker", "Linux", "Git", "Makefile", "Nginx", "SQLite"],
+      "concepts": ["System Programming", "Web Development", "DevOps", "Algorithms", "Network Protocols", "Multithreading", "Socket Programming"]
+    },
+    "soft_skills": [
+      "Problem solving",
+      "Responsibility", 
+      "High work ethic",
+      "Adaptability",
+      "Analytical thinking",
+      "Teamworking",
+      "Multitasking",
+      "Decision-making",
+      "Sociability",
+      "Playful mind"
+    ],
+    "languages": [
+      {
+        "language": "Swedish",
+        "level": "Native"
+      },
+      {
+        "language": "Finnish", 
+        "level": "Fluent"
+      },
+      {
+        "language": "English",
+        "level": "Fluent"
+      }
+    ],
+    "projects": [
+      {
+        "name": "WebPONG",
+        "technologies": ["React", "TypeScript", "Fastify", "Tailwind"],
+        "description": "A full-stack web project built around PONG",
+        "details": [
+          "Using TypeScript, React and Tailwind in frontend",
+          "Using Fastify, Prisma and SQLite in backend",
+          "User management with secure JWT and MFA via OTP",
+          "Two player matches, single player vs AI, Tournaments",
+          "Match customization",
+          "Full screen-reader accessibility (ARIA standards)",
+          "Multi-language support"
+        ]
+      },
+      {
+        "name": "Webserv",
+        "technologies": ["C++"],
+        "description": "An HTTP1.1 webserver written in C++",
+        "details": [
+          "Learned the inner workings of webservers, including configuration parsing, response handling and connection management",
+          "Implemented support for CGI scripts written in Python",
+          "Learned Socket programming, I/O Handling and Network protocols",
+          "Designed protection against a range of malformed input"
+        ]
+      },
+      {
+        "name": "MiniBash",
+        "technologies": ["C"],
+        "description": "A BASH inspired shell written in C",
+        "details": [
+          "Implemented input parsing with support for pipes, heredocs, file I/O redirection, and environment variables",
+          "Process Management using (fork(), waitpid() and execve())",
+          "Ensured efficient memory management with no leaks",
+          "Rigorous testing, to ensure reliability",
+          "Built custom builtins: cd, pwd, export, unset, env, echo and exit",
+          "Signal handling"
+        ]
+      },
+      {
+        "name": "Cube3D",
+        "technologies": ["C"],
+        "description": "A Wolfenstein 3D style 2.5D raycaster",
+        "details": [
+          "Implemented map parsing, Raycasting, texture mapping",
+          "Using a graphics library",
+          "Multithreading for efficiency",
+          "Animated sprite rendering"
+        ]
+      },
+      {
+        "name": "Born2BeRoot",
+        "technologies": ["Linux", "Debian"],
+        "description": "A Linux (Debian) system administrator project",
+        "details": [
+          "Setting up a Linux server",
+          "Managing users and user rights in Linux",
+          "Creating monitoring scripts (using different methods like cron jobs etc.)",
+          "Using SSH and setting up ports",
+          "Overall operations and commands in a Linux environment"
+        ]
+      },
+      {
+        "name": "Philosophers",
+        "technologies": ["C"],
+        "description": "The famous philosophers puzzle",
+        "details": [
+          "Multithreading with high precision",
+          "Mutexes and careful synchronization to avoid deadlock and data races"
+        ]
+      }
+    ]
+  },
+  "personal": {
+    "birth_place": "Turku, Finland",
+    "philosophy": "A happy and laughing mind is a productive mind",
+    "family": {
+      "wife": true,
+      "daughters": 2,
+      "pets": "Cat named Donatella Von Kattunen"
+    },
+    "hobbies": [
+      "Swimming",
+      "Board games (lots of them!)",
+      "Personal/side projects (always has something going on)"
+    ],
+    "free_time": "Enjoying life with my two daughters",
+    "computer_history": "First computer was a Commodore 64 which I LOVED as a small child (got it from an older friend). Always have been into computers and adept at them.",
+    "interests": {
+      "reading": {
+        "favorite_authors": ["Terry Pratchett", "Adrian Tchaikovsky", "George Orwell"],
+        "genres": "Mainly sci-fi and fantasy",
+        "favorite_book": "Mort"
+      },
+      "gaming": {
+        "favorite_board_game": "Catan",
+        "favorite_pc_game": "Mass Effect series"
+      },
+      "movies": {
+        "favorite_movie": "The Shawshank Redemption"
+      }
+    },
+    "travel": {
+      "passion": "Avid traveller",
+      "experience": "Used to backpack around Southeast Asia a lot before kids"
+    },
+    "career_focus": "Full-stack developer, leaning more towards backend",
+    "current_learning": "Deepening Python skills",
+    "future_goals": "Having a software developer job and being able to fully commit to that area",
+    "work_style": "Very social and thrives when working in tandem with others"
+  },
   "links": {
     "site": "https://casimirlundberg.fi",
     "github": "https://github.com/Welhox",

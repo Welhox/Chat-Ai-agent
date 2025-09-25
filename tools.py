@@ -252,3 +252,190 @@ def github_blame_file(owner_repo: str, path: str, ref: Optional[str] = None) -> 
                 for rg in ranges
             ],
         }
+
+# ----- Composite tool for analyzing user contributions -----
+def analyze_my_contributions(owner_repo: str) -> Dict[str, Any]:
+    """Comprehensive analysis of Casimir's contributions to a repository"""
+    # Get GitHub username from bio
+    bio_data = bio_get()
+    username = bio_data.get("username", "Welhox")
+    
+    results = {
+        "repository": owner_repo,
+        "analyzed_for": username,
+        "commits": [],
+        "pull_requests": [],
+        "readme_mentions": [],
+        "summary": {}
+    }
+    
+    try:
+        # 1. Get commits by this user
+        commits = github_list_commits(owner_repo, author=username, per_page=50)
+        results["commits"] = commits
+        
+        # 2. Get pull requests by this user  
+        prs = github_list_pull_requests(owner_repo, author=username, per_page=30)
+        results["pull_requests"] = prs
+        
+        # 3. Check README for mentions of contributions
+        try:
+            readme_data = github_get_readme(owner_repo)
+            readme_content = readme_data.get("content", "").lower()
+            
+            # Look for various forms of the name/username
+            search_terms = [
+                username.lower(),
+                bio_data.get("name", "").lower(),
+                "casimir",
+                "casi"
+            ]
+            
+            mentions = []
+            for term in search_terms:
+                if term and term in readme_content:
+                    # Find lines containing mentions
+                    lines = readme_data.get("content", "").split('\n')
+                    for i, line in enumerate(lines):
+                        if term.lower() in line.lower():
+                            mentions.append({
+                                "term": term,
+                                "line_number": i + 1,
+                                "content": line.strip()
+                            })
+            
+            results["readme_mentions"] = mentions
+        except Exception as e:
+            results["readme_mentions"] = [{"error": f"Could not analyze README: {str(e)}"}]
+        
+        # 4. Generate summary
+        total_commits = len(commits)
+        total_prs = len(prs)
+        readme_found = len(results["readme_mentions"]) > 0
+        
+        results["summary"] = {
+            "total_commits": total_commits,
+            "total_pull_requests": total_prs,
+            "mentioned_in_readme": readme_found,
+            "contribution_level": "high" if total_commits > 10 or total_prs > 3 else "medium" if total_commits > 0 or total_prs > 0 else "none"
+        }
+        
+    except Exception as e:
+        results["error"] = f"Analysis failed: {str(e)}"
+    
+    return results
+
+# ----- Website Content Fetching -----
+def fetch_website_content(url: Optional[str] = None) -> Dict[str, Any]:
+    """Fetch and analyze content from Casimir's website"""
+    if not url:
+        bio_data = bio_get()
+        url = bio_data.get("links", {}).get("site", "https://casimirlundberg.fi")
+    
+    try:
+        with httpx.Client(timeout=15.0, follow_redirects=True) as client:
+            response = client.get(url)
+            response.raise_for_status()
+            
+            # Parse HTML content
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            # Remove script and style elements
+            for script in soup(["script", "style"]):
+                script.extract()
+            
+            # Extract key sections
+            result = {
+                "url": url,
+                "title": soup.title.string if soup.title else "",
+                "sections": {},
+                "meta_description": "",
+                "links": []
+            }
+            
+            # Get meta description
+            meta_desc = soup.find("meta", attrs={"name": "description"})
+            if meta_desc:
+                result["meta_description"] = meta_desc.get("content", "")
+            
+            # Extract main content sections
+            # Look for common section patterns
+            sections = soup.find_all(['section', 'div'], class_=lambda x: x and any(
+                keyword in x.lower() for keyword in ['about', 'bio', 'projects', 'skills', 'experience', 'contact']
+            ))
+            
+            for section in sections:
+                # Get section identifier
+                section_id = section.get('id', '')
+                section_class = ' '.join(section.get('class', []))
+                section_name = section_id or section_class or 'content'
+                
+                # Extract text content
+                text = section.get_text(separator=' ', strip=True)
+                if text and len(text) > 20:  # Only include substantial content
+                    result["sections"][section_name] = text[:1000]  # Limit length
+            
+            # Extract project links and external references
+            links = soup.find_all('a', href=True)
+            for link in links[:10]:  # Limit to first 10 links
+                href = link['href']
+                text = link.get_text(strip=True)
+                if text and len(text) > 3:
+                    result["links"].append({
+                        "text": text[:100],
+                        "url": href
+                    })
+            
+            # If no sections found, get general page content
+            if not result["sections"]:
+                body_text = soup.get_text(separator=' ', strip=True)
+                result["sections"]["main_content"] = body_text[:2000]
+            
+            return result
+            
+    except Exception as e:
+        return {
+            "url": url,
+            "error": f"Failed to fetch website content: {str(e)}",
+            "suggestion": "Website might be temporarily unavailable or require different access method"
+        }
+
+def get_professional_profile() -> Dict[str, Any]:
+    """Get comprehensive professional and personal information from bio data"""
+    bio_data = bio_get()
+    
+    # Extract professional information from enhanced bio
+    professional_info = {
+        "basic_info": {
+            "name": bio_data.get("name", ""),
+            "location": bio_data.get("location", ""),
+            "tagline": bio_data.get("tagline", ""),
+            "email": bio_data.get("email", ""),
+            "profile_summary": bio_data.get("profile_summary", "")
+        },
+        "links": bio_data.get("links", {}),
+        "technical_focus": bio_data.get("focus", []),
+        "projects": bio_data.get("projects", [])
+    }
+    
+    # Add detailed professional information if available
+    professional_data = bio_data.get("professional", {})
+    if professional_data:
+        professional_info.update({
+            "current_role": professional_data.get("current_role", ""),
+            "background": professional_data.get("background", ""),
+            "education": professional_data.get("education", []),
+            "experience": professional_data.get("experience", []),
+            "technical_skills": professional_data.get("technical_skills", {}),
+            "soft_skills": professional_data.get("soft_skills", []),
+            "languages": professional_data.get("languages", []),
+            "projects": professional_data.get("projects", [])
+        })
+    
+    # Add personal information if available
+    personal_data = bio_data.get("personal", {})
+    if personal_data:
+        professional_info["personal"] = personal_data
+    
+    return professional_info

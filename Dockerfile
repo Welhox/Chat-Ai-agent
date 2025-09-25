@@ -9,6 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy app code and necessary modules
 COPY app ./app
 COPY constraints.py tools.py ./
+COPY data ./data
 
 # Cloud Run expects the app to listen on $PORT
 ENV PORT=8080

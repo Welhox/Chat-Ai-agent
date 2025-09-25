@@ -220,6 +220,42 @@ TOOLS_SPEC = [
             },
         },
     },
+    {
+        "type": "function",
+        "function": {
+            "name": "analyze_my_contributions",
+            "description": "Comprehensive analysis of Casimir's contributions to a repository (commits, PRs, README mentions)",
+            "parameters": {
+                "type": "object",
+                "properties": {"owner_repo": {"type": "string", "description": "Repository in format 'owner/name'"}},
+                "required": ["owner_repo"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "fetch_website_content",
+            "description": "Fetch current content from Casimir's portfolio website (casimirlundberg.fi)",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "url": {"type": "string", "description": "Website URL (defaults to bio.json site link)"}
+                },
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_professional_profile",
+            "description": "Get comprehensive professional information including experience, skills, education, and achievements",
+            "parameters": {
+                "type": "object",
+                "properties": {},
+            },
+        },
+    },
 ]
 
 # ----- Tool dispatcher -----
@@ -266,6 +302,12 @@ def execute_tool(name: str, args: Dict[str, Any]) -> str:
             return json_dumps(T.github_get_pull_request(args["owner_repo"], args["number"]))
         if name == "github_blame_file":
             return json_dumps(T.github_blame_file(args["owner_repo"], args["path"], args.get("ref")))
+        if name == "analyze_my_contributions":
+            return json_dumps(T.analyze_my_contributions(args["owner_repo"]))
+        if name == "fetch_website_content":
+            return json_dumps(T.fetch_website_content(args.get("url")))
+        if name == "get_professional_profile":
+            return json_dumps(T.get_professional_profile())
         return json_dumps({"error": f"unknown tool {name}"})
     except Exception as e:
         return json_dumps({"error": str(e)})
