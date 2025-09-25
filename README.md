@@ -6,12 +6,16 @@
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
+[![Google Cloud](https://img.shields.io/badge/Google%20Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)](https://cloud.google.com)
+[![Live Status](https://img.shields.io/badge/Status-Live%20🟢-brightgreen?style=for-the-badge)](https://casimirlundberg.fi)
 
 ---
 
 ## 🌟 Overview
 
 **Donna** is an intelligent AI chat agent designed to represent Casimir Lundberg on his portfolio website. Built with enterprise-grade security features, comprehensive rate limiting, and robust production deployment capabilities, Donna provides visitors with an interactive way to learn about Casimir's background, skills, and projects.
+
+> 🌐 **Currently Live**: Donna is actively hosted on Google Cloud Run and serves visitors on Casimir's portfolio at [casimirlundberg.fi](https://casimirlundberg.fi)
 
 ### 🎯 Key Features
 
@@ -185,7 +189,80 @@ Personal information is stored in `data/bio.json`:
 
 ---
 
-## 📁 Project Structure
+## �️ AI Tools & Capabilities
+
+Donna is equipped with a comprehensive suite of tools that enable intelligent responses about Casimir's professional background and projects. These tools are implemented in `tools.py` and provide the AI with access to real-time information.
+
+### 📋 Bio Management Tools
+
+#### `bio_get(keys: Optional[List[str]] = None)`
+Retrieves biographical information from the JSON database.
+```python
+# Get all bio data
+bio_data = bio_get()
+
+# Get specific keys only
+contact_info = bio_get(["name", "email", "location"])
+```
+
+#### `bio_set(update: Dict[str, Any])`
+Updates biographical information dynamically.
+```python
+# Update profile information
+bio_set({"current_role": "Software Developer - Seeking New Opportunities"})
+```
+
+### 🐙 GitHub Integration Tools
+
+#### Repository Analysis
+- **`github_list_repos(user)`**: Lists all public repositories for a given user
+- **`github_get_readme(owner_repo)`**: Fetches and parses README files
+- **`github_get_file(owner_repo, path)`**: Retrieves specific file contents
+
+#### Code & Commit Analysis
+- **`github_search_code(query, repo)`**: Searches for code snippets across repositories
+- **`github_list_commits(owner_repo, author)`**: Analyzes commit history and contributions
+- **`github_get_commit(owner_repo, sha)`**: Detailed commit information with file changes
+- **`github_blame_file(owner_repo, path)`**: Precise authorship tracking using GraphQL
+
+#### Pull Request Analysis
+- **`github_list_pull_requests(owner_repo, state, author)`**: Lists PRs with filtering
+- **`github_get_pull_request(owner_repo, number)`**: Detailed PR analysis
+
+#### Advanced Analytics
+- **`analyze_my_contributions(owner_repo)`**: Comprehensive contribution analysis including:
+  - Commit frequency and patterns
+  - File modification history
+  - Collaboration metrics
+  - Technology stack usage
+
+### 🌐 Web Content Tools
+
+#### `fetch_website_content(url: Optional[str] = None)`
+Intelligently scrapes and analyzes web content from Casimir's portfolio:
+- Extracts structured content from sections (about, projects, skills)
+- Parses meta descriptions and page titles
+- Identifies relevant links and references
+- Handles dynamic content and navigation
+
+#### `get_professional_profile()`
+Aggregates comprehensive professional information:
+- Technical skills and expertise areas
+- Education and certification details
+- Professional experience and achievements
+- Current availability status and career objectives
+
+### 🔧 Tool Integration
+
+All tools are seamlessly integrated with the AI system to provide:
+- **Real-time Information**: Dynamic access to current profile data
+- **Contextual Responses**: Tools inform conversational context
+- **Data Validation**: Automated verification of information accuracy
+- **Performance Optimization**: Efficient caching and rate limiting
+
+---
+
+## �📁 Project Structure
 
 ```
 Chat-Ai-agent/
@@ -206,20 +283,52 @@ Chat-Ai-agent/
 
 ## 🚀 Deployment
 
-### Cloud Run (Google Cloud)
+### ☁️ Google Cloud Run (Production)
+
+**Donna is currently hosted on Google Cloud Run**, providing scalable, serverless deployment with automatic HTTPS and global CDN distribution.
+
+#### Production Deployment
 ```bash
-# Build and deploy
+# Configure project and region
+gcloud config set project YOUR_PROJECT_ID
+gcloud config set run/region europe-north1
+
+# Deploy with environment variables
 gcloud run deploy donna-chat \
   --source . \
   --platform managed \
-  --region europe-north1
+  --allow-unauthenticated \
+  --set-env-vars="OPENAI_API_KEY=${OPENAI_API_KEY},CLIENT_API_KEY=${CLIENT_API_KEY}" \
+  --memory=1Gi \
+  --cpu=1 \
+  --timeout=300 \
+  --max-instances=10
 ```
 
-### Railway/Render
+#### Cloud Run Features
+- **🌍 Global Distribution**: Automatic multi-region deployment
+- **📈 Auto-scaling**: Scales to zero when not in use, scales up under load
+- **🔒 Secure by Default**: Managed HTTPS certificates and VPC integration
+- **💰 Cost Effective**: Pay-per-request pricing model
+- **⚡ Cold Start Optimization**: FastAPI + uvicorn for minimal cold start times
+
+#### Environment Configuration
+```yaml
+# Cloud Run Environment Variables
+OPENAI_API_KEY: "sk-..."          # OpenAI API access
+CLIENT_API_KEY: "secure-key-123"  # Client authentication
+GITHUB_TOKEN: "ghp_..."           # GitHub API access (optional)
+GITHUB_USER: "Welhox"             # GitHub username
+```
+
+### 🚢 Alternative Deployment Options
+
+#### Railway/Render
 ```bash
-# Set environment variables
+# Set environment variables in dashboard
 OPENAI_API_KEY=your_openai_key
 CLIENT_API_KEY=your_client_key
+PORT=8000
 ```
 
 ### Traditional VPS
