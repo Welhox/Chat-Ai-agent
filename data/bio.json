@@ -163,7 +163,10 @@
     "family": {
       "wife": true,
       "daughters": 2,
-      "pets": "Cat named Donatella Von Kattunen"
+      "pets": {
+        "cat": "Donatella Von Kattunen",
+        "coding_companion": "She doesn't let me code without having her in my lap or on my shoulders - she's my dedicated programming supervisor!"
+      }
     },
     "hobbies": [
       "Swimming",
