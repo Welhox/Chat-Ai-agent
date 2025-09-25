@@ -334,7 +334,7 @@ def chat(req: ChatRequest):
 
         try:
             resp = client.chat.completions.create(
-                model="gpt-4o-mini",
+                model="gpt-4o",
                 messages=messages,          # type: ignore
                 tools=TOOLS_SPEC,
                 tool_choice="auto",
