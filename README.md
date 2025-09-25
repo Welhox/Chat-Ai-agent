@@ -392,7 +392,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Casimir Lundberg** is a software developer transitioning from aviation to tech, currently studying at **Hive Helsinki**. With a strong foundation in **C/C++**, **React/TypeScript**, and **Python**, he builds robust applications with a focus on clean code and user experience.
 
 - 🌐 **Portfolio**: [casimirlundberg.fi](https://casimirlundberg.fi)
-- 💼 **LinkedIn**: [Casimir Lundberg](https://linkedin.com/in/casimir-lundberg)
+- 💼 **LinkedIn**: [Casimir Lundberg](https://linkedin.com/in/caslun)
 - 📧 **Email**: mail@casimirlundberg.fi
 - 🐙 **GitHub**: [@Welhox](https://github.com/Welhox)
 
