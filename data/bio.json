@@ -14,7 +14,54 @@
         "school": "Hive Helsinki",
         "period": "2023 - 2025",
         "program": "Intensive Software Development and Administration Program",
-        "description": "Including a diverse set of problems to solve using a range of technologies"
+        "description": "Including a diverse set of problems to solve using a range of technologies",
+        "detailed_info": {
+          "philosophy": "More than a coding school - a place where you grow skills, connections, and confidence to thrive in tech and beyond",
+          "learning_approach": {
+            "method": "Peer-to-peer learning with no traditional teachers",
+            "style": "Learning through exploration, trial and error, and active doing",
+            "collaboration": "Students collaborate together, share knowledge, and support each other"
+          },
+          "transformation": {
+            "personal": "Problem-solving, collaboration, and ownership mindset",
+            "technical": "Rigorous, practical curriculum rooted in real projects for 18 months",
+            "professional": "Graduates as resilient, adaptable, self-driven lifelong learners"
+          },
+          "curriculum": {
+            "duration": "18 months of technically challenging projects",
+            "focus": "Programming fundamentals with critical assessment of when to use new tools/technologies vs fundamentals",
+            "outcome": "Technical expertise and confidence to contribute from day one, regardless of stack"
+          },
+          "community": {
+            "ecosystem": "Vibrant community connected to tech industry",
+            "learning_sources": "Masterclasses and workshops with professionals, alumni, and industry leaders",
+            "networking": "Lasting relationships and practical industry insights"
+          },
+          "entrepreneurship": {
+            "culture": "Lab for technical founders fostering creativity, speed, and innovation",
+            "activities": "Hackathons, challenges, rapid prototyping, and testing",
+            "mindset": "Failure is expected and encouraged, making founding a startup feel inspiring and realistic"
+          },
+          "key_statistics": {
+            "demographics": {
+              "born_abroad": "60%",
+              "nationalities": "70+ different nationalities", 
+              "non_male": "25%",
+              "median_age": 32,
+              "career_shifters": "59%",
+              "no_prior_coding": "63%"
+            },
+            "results": {
+              "online_registrations": "25,000+",
+              "piscine_applicants": "2,000+", 
+              "students_accepted": "700+",
+              "active_students": "300+",
+              "alumni_employed": "80%",
+              "hiring_companies": "100+ top tech companies",
+              "employer_satisfaction": "98% grade Hivers as good or excellent"
+            }
+          }
+        }
       },
       {
         "school": "Vaasa Aftonskola",
@@ -86,9 +133,23 @@
     ],
     "projects": [
       {
+        "name": "Transcendence", 
+        "technologies": ["React", "TypeScript", "Fastify", "Tailwind", "Docker"],
+        "description": "Final project at Hive Helsinki - a full-stack PONG web application",
+        "details": [
+          "Collaborative team project as the capstone of Hive Helsinki program",
+          "Full-stack web application centered around the classic PONG game",
+          "Comprehensive user management and authentication system",
+          "Real-time multiplayer functionality",
+          "Tournament system and AI opponents",
+          "Modern web technologies and containerized deployment"
+        ]
+      },
+      {
         "name": "WebPONG",
         "technologies": ["React", "TypeScript", "Fastify", "Tailwind"],
-        "description": "A full-stack web project built around PONG",
+        "description": "Personal fork of Transcendence - a full-stack web project built around PONG",
+        "project_relationship": "WebPONG is Casimir's personal fork of the Transcendence project, allowing him to continue developing and experimenting with features independently",
         "details": [
           "Using TypeScript, React and Tailwind in frontend",
           "Using Fastify, Prisma and SQLite in backend",

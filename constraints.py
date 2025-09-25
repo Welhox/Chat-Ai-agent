@@ -70,13 +70,15 @@ class ToolUsageGuidelines:
         "get_professional_profile": "Comprehensive background (professional + personal)",
         "fetch_website_content": "Current portfolio website information", 
         "analyze_my_contributions": "GitHub contribution analysis and project involvement",
-        "github_*": "Specific code questions and repository details"
+        "github_list_repos": "ALWAYS use first for any repository/project questions to discover available projects",
+        "github_*": "Specific code questions and repository details after discovering repos"
     }
     
     BEST_PRACTICES = """
     - ALWAYS use get_professional_profile for ANY questions about Casimir's family, wife, children, personal life, hobbies, or interests
     - Use get_professional_profile first for all personal/professional questions
-    - Use specific GitHub tools for code-related queries
+    - ALWAYS use github_list_repos first when asked about projects, repositories, or code (even with vague descriptions)
+    - Use specific GitHub tools for detailed code questions after discovering available repos
     - Cite sources with file paths and repository names
     - Be transparent about tool limitations and suggest alternatives
     - Approach each query with feline curiosity - investigate thoroughly! 🐾

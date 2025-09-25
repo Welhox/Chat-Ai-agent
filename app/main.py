@@ -97,7 +97,7 @@ TOOLS_SPEC = [
         "type": "function",
         "function": {
             "name": "github_list_repos",
-            "description": "List the user's GitHub repos (public) with basic info.",
+            "description": "ALWAYS use first when asked about repositories, projects, or code. Lists all GitHub repos to discover project names when users ask vague questions like 'tell me about his projects' or mention partial names.",
             "parameters": {
                 "type": "object",
                 "properties": {"user": {"type": "string", "description": "GitHub username, defaults to env"}},
