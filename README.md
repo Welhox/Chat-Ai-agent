@@ -1,4 +1,6 @@
-# 🤖 Donna - AI Chat Agent
+# Donna - Feline AI Chat Agent
+<img width="1024" height="768" alt="Donna-ai-assistant-4-3" src="https://github.com/user-attachments/assets/8f502c0c-6a69-4753-9d25-ef093b6e0819" />
+
 
 > **A sophisticated AI-powered chat agent for Casimir's portfolio, built with security, rate limiting, and production deployment in mind.**
 
