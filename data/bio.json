@@ -9,7 +9,28 @@
   "professional": {
     "current_role": "Software Developer - Seeking New Opportunities",
     "availability": "Available for full-time positions in software development",
+    "current_employment": {
+      "status": "Working part-time in aviation while transitioning to software development",
+      "transition_stage": "Completed Hive Helsinki (2023-2025), actively seeking full-time developer role"
+    },
     "background": "Aviation professional transitioning to software development",
+    "aviation_transferable_skills": [
+      "Precision and attention to detail from safety-critical environments",
+      "System administration experience managing 200+ users",
+      "High-pressure decision making and staying calm under stress",
+      "Team coordination across multiple stakeholders and airlines",
+      "Documentation and procedural thinking",
+      "Methodical problem-solving approach"
+    ],
+    "job_search": {
+      "status": "Actively seeking opportunities",
+      "preferences": {
+        "work_arrangement": "Hybrid work",
+        "location": "Helsinki area, Finland",
+        "role_type": "Full-stack developer, leaning towards backend",
+        "role_focus": "Backend development, system architecture, API design"
+      }
+    },
     "education": [
       {
         "school": "Hive Helsinki",
@@ -46,7 +67,7 @@
           "key_statistics": {
             "demographics": {
               "born_abroad": "60%",
-              "nationalities": "70+ different nationalities", 
+              "nationalities": "70+ different nationalities",
               "non_male": "25%",
               "median_age": 32,
               "career_shifters": "59%",
@@ -54,7 +75,7 @@
             },
             "results": {
               "online_registrations": "25,000+",
-              "piscine_applicants": "2,000+", 
+              "piscine_applicants": "2,000+",
               "students_accepted": "700+",
               "active_students": "300+",
               "alumni_employed": "80%",
@@ -74,6 +95,7 @@
         "role": "Operations Officer | System Administrator",
         "company": "Aviator Finland",
         "period": "2013 - PRESENT",
+        "current_status": "Part-time while transitioning to software development",
         "responsibilities": [
           "Aircraft weight and balance Instructor and Officer, responsible for load planning and performing weight and balance calculations for aircraft",
           "Instructed both manual and computerized weight and balance methods, according to industry standards",
@@ -101,14 +123,14 @@
       }
     ],
     "technical_skills": {
-      "programming_languages": ["C", "C++", "Python", "TypeScript"],
-      "frameworks_libraries": ["React", "Node.js", "Fastify", "Tailwind.css", "Prisma"],
-      "tools_technologies": ["Docker", "Linux", "Git", "Makefile", "Nginx", "SQLite"],
-      "concepts": ["System Programming", "Web Development", "DevOps", "Algorithms", "Network Protocols", "Multithreading", "Socket Programming"]
+      "programming_languages": ["C", "C++", "Python", "TypeScript", "JavaScript"],
+      "frameworks_libraries": ["React", "Node.js", "Fastify", "Tailwind.css", "Prisma", "FastAPI"],
+      "tools_technologies": ["Docker", "Linux", "Git", "Makefile", "Nginx", "SQLite", "Google Cloud Run"],
+      "concepts": ["System Programming", "Web Development", "DevOps", "Algorithms", "Network Protocols", "Multithreading", "Socket Programming", "API Design", "AI Integration", "Rate Limiting", "Authentication"]
     },
     "soft_skills": [
       "Problem solving",
-      "Responsibility", 
+      "Responsibility",
       "High work ethic",
       "Adaptability",
       "Analytical thinking",
@@ -118,13 +140,19 @@
       "Sociability",
       "Playful mind"
     ],
+    "personality_traits": {
+      "humor_style": "Playful and curious mind",
+      "work_philosophy": "A happy and laughing mind is a productive mind",
+      "problem_solving_approach": "Enjoys the detective work of debugging and solving challenging problems",
+      "work_style": "Very social and thrives when working in tandem with others"
+    },
     "languages": [
       {
         "language": "Swedish",
         "level": "Native"
       },
       {
-        "language": "Finnish", 
+        "language": "Finnish",
         "level": "Fluent"
       },
       {
@@ -134,8 +162,25 @@
     ],
     "projects": [
       {
-        "name": "Transcendence", 
-        "technologies": ["React", "TypeScript", "Fastify", "Tailwind", "Docker"],
+        "name": "Donna AI Agent",
+        "technologies": ["Python", "FastAPI", "OpenAI API", "Docker", "Google Cloud Run", "Beautiful Soup"],
+        "description": "AI-powered chat assistant with GitHub API integration and real-time data access",
+        "github": "https://github.com/Welhox/Donna-Ai-assistant",
+        "live_demo": "https://casimirlundberg.fi",
+        "details": [
+          "Python-powered chat assistant integrated with OpenAI's GPT API",
+          "Real-time GitHub repository data retrieval via custom function calling",
+          "Deployed on Google Cloud Run with serverless architecture",
+          "Enterprise-grade security with rate limiting and API authentication",
+          "Web scraping for portfolio content analysis using Beautiful Soup",
+          "Usage tracking and monitoring for token consumption",
+          "Featured as interactive element on portfolio website",
+          "Demonstrates AI integration, backend architecture, and cloud deployment skills"
+        ]
+      },
+      {
+        "name": "Transcendence",
+        "technologies": ["React", "TypeScript", "Fastify", "Tailwind", "Docker", "Prisma", "SQLite"],
         "description": "Final project at Hive Helsinki - a full-stack PONG web application",
         "details": [
           "Collaborative team project as the capstone of Hive Helsinki program",
@@ -148,8 +193,9 @@
       },
       {
         "name": "WebPONG",
-        "technologies": ["React", "TypeScript", "Fastify", "Tailwind"],
+        "technologies": ["React", "TypeScript", "Fastify", "Tailwind", "Prisma", "SQLite", "Docker", "Nginx"],
         "description": "Personal fork of Transcendence - a full-stack web project built around PONG",
+        "github": "https://github.com/Welhox/webpong",
         "project_relationship": "WebPONG is Casimir's personal fork of the Transcendence project, allowing him to continue developing and experimenting with features independently",
         "details": [
           "Using TypeScript, React and Tailwind in frontend",
@@ -158,13 +204,15 @@
           "Two player matches, single player vs AI, Tournaments",
           "Match customization",
           "Full screen-reader accessibility (ARIA standards)",
-          "Multi-language support"
+          "Multi-language support",
+          "Deployed with Docker and Nginx"
         ]
       },
       {
         "name": "Webserv",
         "technologies": ["C++"],
         "description": "An HTTP1.1 webserver written in C++",
+        "github": "https://github.com/Welhox/webserv",
         "details": [
           "Learned the inner workings of webservers, including configuration parsing, response handling and connection management",
           "Implemented support for CGI scripts written in Python",
@@ -176,6 +224,7 @@
         "name": "MiniBash",
         "technologies": ["C"],
         "description": "A BASH inspired shell written in C",
+        "github": "https://github.com/Welhox/minishell",
         "details": [
           "Implemented input parsing with support for pipes, heredocs, file I/O redirection, and environment variables",
           "Process Management using (fork(), waitpid() and execve())",
@@ -189,6 +238,7 @@
         "name": "Cube3D",
         "technologies": ["C"],
         "description": "A Wolfenstein 3D style 2.5D raycaster",
+        "github": "https://github.com/Welhox/cub3D",
         "details": [
           "Implemented map parsing, Raycasting, texture mapping",
           "Using a graphics library",
@@ -212,6 +262,7 @@
         "name": "Philosophers",
         "technologies": ["C"],
         "description": "The famous philosophers puzzle",
+        "github": "https://github.com/Welhox/philosophers",
         "details": [
           "Multithreading with high precision",
           "Mutexes and careful synchronization to avoid deadlock and data races"
@@ -257,7 +308,7 @@
       "experience": "Used to backpack around Southeast Asia a lot before kids"
     },
     "career_focus": "Full-stack developer, leaning more towards backend",
-    "current_learning": "Deepening Python skills",
+    "current_learning": "Deepening Python skills and cloud deployment",
     "future_goals": "Having a software developer job and being able to fully commit to that area",
     "work_style": "Very social and thrives when working in tandem with others"
   },
